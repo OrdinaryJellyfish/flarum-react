@@ -5,7 +5,6 @@ namespace OrdinaryJellyfish\FlarumReact;
 use Flarum\Foundation\SiteInterface;
 use OrdinaryJellyfish\FlarumReact\Emitters\ReactEmitter;
 use Psr\Http\Message\ServerRequestInterface;
-use React\Http\Response as ReactResponse;
 use Throwable;
 use Zend\Diactoros\Response;
 use Zend\Diactoros\ServerRequest;
@@ -19,19 +18,25 @@ class Server
      */
     private $responseEmitter;
 
+    /**
+     * @var ServerRequestInterface
+     */
+    private $request;
+
     private $site;
 
-    public function __construct(SiteInterface $site)
+    public function __construct(ServerRequestInterface $request, SiteInterface $site)
     {
+        $this->request = $request;
         $this->site = $site;
     }
 
-    public function listen(ServerRequestInterface $request, ReactResponse $response)
+    public function listen()
     {
-        $requestHandler = function () use ($request) {
-            return $request;
+        $requestHandler = function () {
+            return $this->request;
         };
-        $this->responseEmitter = new ReactEmitter($response);
+        $this->responseEmitter = new ReactEmitter();
 
         $runner = new RequestHandlerRunner(
             $this->safelyBootAndGetHandler(),

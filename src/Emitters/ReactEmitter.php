@@ -13,9 +13,9 @@ class ReactEmitter implements EmitterInterface
      */
     private $reactResponse;
 
-    public function __construct(Response $response)
+    public function __construct()
     {
-        $this->reactResponse = $response;
+        $this->reactResponse = new Response();
     }
 
     public function emit(ResponseInterface $response): bool
