@@ -1,0 +1,25 @@
+{
+  "name": "ordinaryjellyfish/flarum-react",
+  "description": "Run Flarum using your own ReactPHP HTTP server",
+  "type": "library",
+  "license": "MIT",
+  "keywords": [
+    "flarum"
+  ],
+  "authors": [
+    {
+      "name": "Tristian Kelly",
+      "email": "tristian.kelly560@gmail.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "flarum/core": "^0.1.0-beta.8",
+    "react/http": "^0.8.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "OrdinaryJellyfish\\FlarumReact\\": "src/"
+    }
+  }
+}
