@@ -5,6 +5,7 @@ namespace OrdinaryJellyfish\FlarumReact;
 use Flarum\Foundation\SiteInterface;
 use OrdinaryJellyfish\FlarumReact\Emitters\ReactEmitter;
 use Psr\Http\Message\ServerRequestInterface;
+use React\Http\Response as ReactResponse;
 use Throwable;
 use Zend\Diactoros\Response;
 use Zend\Diactoros\ServerRequest;
@@ -17,6 +18,11 @@ class Server
      * @var ReactEmitter
      */
     private $responseEmitter;
+
+    /**
+     * @var ReactResponse
+     */
+    private $errorResponse;
 
     /**
      * @var ServerRequestInterface
@@ -51,9 +57,9 @@ class Server
         $runner->run();
     }
 
-    public function getResponse()
+    public function getResponse(): ReactResponse
     {
-        return $this->responseEmitter->getReactResponse();
+        return $this->errorResponse ?? $this->responseEmitter->getReactResponse();
     }
 
     private function safelyBootAndGetHandler()
@@ -61,7 +67,7 @@ class Server
         try {
             return $this->site->bootApp()->getRequestHandler();
         } catch (Throwable $e) {
-            exit($this->formatBootException($e));
+            $this->errorResponse = new ReactResponse(500, ['Content-Type' => 'text/html'], $this->formatBootException($e));
         }
     }
 
