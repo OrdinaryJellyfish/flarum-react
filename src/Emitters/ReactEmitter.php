@@ -4,7 +4,7 @@ namespace OrdinaryJellyfish\FlarumReact\Emitters;
 
 use Psr\Http\Message\ResponseInterface;
 use React\Http\Response;
-use Zend\HttpHandlerRunner\Emitter\EmitterInterface;
+use Laminas\HttpHandlerRunner\Emitter\EmitterInterface;
 
 class ReactEmitter implements EmitterInterface
 {

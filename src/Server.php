@@ -7,10 +7,10 @@ use OrdinaryJellyfish\FlarumReact\Emitters\ReactEmitter;
 use Psr\Http\Message\ServerRequestInterface;
 use React\Http\Response as ReactResponse;
 use Throwable;
-use Zend\Diactoros\Response;
-use Zend\Diactoros\ServerRequest;
-use Zend\HttpHandlerRunner\RequestHandlerRunner;
-use Zend\Stratigility\Middleware\ErrorResponseGenerator;
+use Laminas\Diactoros\Response;
+use Laminas\Diactoros\ServerRequest;
+use Laminas\HttpHandlerRunner\RequestHandlerRunner;
+use Laminas\Stratigility\Middleware\ErrorResponseGenerator;
 
 class Server
 {
