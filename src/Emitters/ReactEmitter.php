@@ -2,9 +2,9 @@
 
 namespace OrdinaryJellyfish\FlarumReact\Emitters;
 
+use Laminas\HttpHandlerRunner\Emitter\EmitterInterface;
 use Psr\Http\Message\ResponseInterface;
 use React\Http\Response;
-use Laminas\HttpHandlerRunner\Emitter\EmitterInterface;
 
 class ReactEmitter implements EmitterInterface
 {

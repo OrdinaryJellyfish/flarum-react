@@ -3,14 +3,14 @@
 namespace OrdinaryJellyfish\FlarumReact;
 
 use Flarum\Foundation\SiteInterface;
-use OrdinaryJellyfish\FlarumReact\Emitters\ReactEmitter;
-use Psr\Http\Message\ServerRequestInterface;
-use React\Http\Response as ReactResponse;
-use Throwable;
 use Laminas\Diactoros\Response;
 use Laminas\Diactoros\ServerRequest;
 use Laminas\HttpHandlerRunner\RequestHandlerRunner;
 use Laminas\Stratigility\Middleware\ErrorResponseGenerator;
+use OrdinaryJellyfish\FlarumReact\Emitters\ReactEmitter;
+use Psr\Http\Message\ServerRequestInterface;
+use React\Http\Response as ReactResponse;
+use Throwable;
 
 class Server
 {
